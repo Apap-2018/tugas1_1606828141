@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Home Page</title>
+		
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<h2>Sistem Informasi Kepegawaian</h2>
+		<h3>Selamat datang di Sistem Informasi Kepegawaian</h3>
+		
+		<h3>Lihat Data Pegawai berdasarkan NIP</h3>
+		<form th:action="@{/pegawai}" method = "GET">
+			Masukkan Nomor Induk Pegawai <br>
+			<input type = "text" name = "nip" />
+			<br>
+			<button type = "submit">Lihat</button>
+		</form>
+	</body>
+</html>
