@@ -3,23 +3,35 @@
 
 	<head>
 		<title>Detail Pegawai</title>
+		
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	
 	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
 		<h2 th:text="'Lihat Data Pegawai - ' + ${pegawai.nip}"></h2>
 		
-		<h3 th:text="'NIP '+${pegawai.nip}"></h3>
-		<h3 th:text="'Nama '+${pegawai.nama}"></h3>
-		<h3 th:text="'Tempat Lahir '+${pegawai.tempatLahir}"></h3>
-		<h3 th:text="'Tanggal Lahir '+${pegawai.tanggalLahir}"></h3>
-		<h3 th:text="'Tahun Masuk '+${pegawai.tahunMasuk}"></h3>
-		<h3 th:text="'Nama Instansi ' + ${pegawai.instansi.nama} + ' - ' + ${pegawai.instansi.provinsi.nama}"></h3>
-		<ul th:each="jabatan : ${jabatan}">
-			<li th:text="${jabatan.nama}"> </li>
-		</ul>
-		<h3 th:text="'Gaji Rp'+${gaji}"></h3>
+		<div class="row">
+			<div class="col-md-6">
+	            <div class="card">
+	            	<div class="card-body">
+	          			<h3 th:text="'NIP '+${pegawai.nip}"></h3>
+						<h3 th:text="'Nama '+${pegawai.nama}"></h3>
+						<h3 th:text="'Tempat Lahir '+${pegawai.tempatLahir}"></h3>
+						<h3 th:text="'Tanggal Lahir '+${pegawai.tanggalLahir}"></h3>
+						<h3 th:text="'Tahun Masuk '+${pegawai.tahunMasuk}"></h3>
+						<h3 th:text="'Nama Instansi ' + ${pegawai.instansi.nama} + ' - ' + ${pegawai.instansi.provinsi.nama}"></h3>
+						<ul th:each="jabatan : ${jabatan}">
+							<li th:text="${jabatan.nama}"> </li>
+						</ul>
+						<h3 th:text="'Gaji Rp'+${gaji}"></h3>  		
+	            	</div>
+				</div>
+			</div>
+		</div>
 		
 		<br>
-		<button type = "submit">Ubah</button>
+		<button type = "submit" class="btn btn-primary">Ubah</button>
 	</body>
 </html>

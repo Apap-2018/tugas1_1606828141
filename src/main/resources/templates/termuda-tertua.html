@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title>Detail pegawaiMuda</title>
+		
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			/* Create two equal columns that floats next to each other */
+			.column {
+				float: left;
+				width: 50%;
+				padding: 10px;
+				height: 300px; /* Should be removed. Only for demonstration */
+			}
+			
+			/* Clear floats after the columns */
+			.row:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+			
+			/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+			@media screen and (max-width: 600px) {
+				.column {
+					width: 100%;
+				}
+			}
+		</style>
+		
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		
+		<div class="row">
+  			<div class="column" style="background-color:white;">
+				<h2>Data Pegawai Termuda</h2>
+				
+				<h4 th:text="'NIP '+${pegawaiMuda.nip}"></h4>
+				<h4 th:text="'Nama '+${pegawaiMuda.nama}"></h4>
+				<h4 th:text="'Tempat Lahir '+${pegawaiMuda.tempatLahir}"></h4>
+				<h4 th:text="'Tanggal Lahir '+${pegawaiMuda.tanggalLahir}"></h4>
+				<h4 th:text="'Tahun Masuk '+${pegawaiMuda.tahunMasuk}"></h4>
+				<h4 th:text="'Nama Instansi ' + ${pegawaiMuda.instansi.nama} + ' - ' + ${pegawaiMuda.instansi.provinsi.nama}"></h4>
+				<ul th:each="jabatan : ${jabatanMuda}">
+					<li th:text="${jabatan.nama}"> </li>
+				</ul>
+				<h4 th:text="'Gaji Rp '+${gajiMuda}"></h4>
+			</div>
+		
+			<div class="column" style="background-color:white;">		
+				<h2>Data Pegawai Tertua</h2>
+				
+				<h4 th:text="'NIP '+${pegawaiTua.nip}"></h4>
+				<h4 th:text="'Nama '+${pegawaiTua.nama}"></h4>
+				<h4 th:text="'Tempat Lahir '+${pegawaiTua.tempatLahir}"></h4>
+				<h4 th:text="'Tanggal Lahir '+${pegawaiTua.tanggalLahir}"></h4>
+				<h4 th:text="'Tahun Masuk '+${pegawaiTua.tahunMasuk}"></h4>
+				<h4 th:text="'Nama Instansi ' + ${pegawaiTua.instansi.nama} + ' - ' + ${pegawaiTua.instansi.provinsi.nama}"></h4>
+				<ul th:each="jabatan : ${jabatanTua}">
+					<li th:text="${jabatan.nama}"> </li>
+				</ul>
+				<h4 th:text="'Gaji Rp '+${gajiTua}"></h4>
+			</div>
+		</div>
+	</body>
+
+
+
+
+
+</html>
