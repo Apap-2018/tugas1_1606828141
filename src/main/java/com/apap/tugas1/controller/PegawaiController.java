@@ -82,19 +82,15 @@ public class PegawaiController {
 		}
 		
 		//Gaji Tertinggi Muda
-		System.out.println(nipMuda);
-		System.out.println(nipTua);
-		
 		double gajiTertinggiMuda = pegawaiService.calculateGajiPokokTerbesar(pegawaiService.getPegawaiBynip(nipMuda));
-		
 		double tunjunganMuda = pegawaiService.getPegawaiBynip(nipMuda).getInstansi().getProvinsi().getPresentaseTunjangan() * 0.01 * gajiTertinggiMuda;
 		double gajiPokokMuda = gajiTertinggiMuda + tunjunganMuda;
 		model.addAttribute("gajiMuda", Math.round(gajiPokokMuda));
 		
 		//Gaji Tertinggi Tua
 		double gajiTertinggiTua = pegawaiService.calculateGajiPokokTerbesar(pegawaiService.getPegawaiBynip(nipTua));
-		double tunjungan = pegawaiService.getPegawaiBynip(nipTua).getInstansi().getProvinsi().getPresentaseTunjangan() * 0.01 * gajiTertinggiTua;
-		double gajiPokokTua = gajiTertinggiTua + tunjungan;
+		double tunjunganTua = pegawaiService.getPegawaiBynip(nipTua).getInstansi().getProvinsi().getPresentaseTunjangan() * 0.01 * gajiTertinggiTua;
+		double gajiPokokTua = gajiTertinggiTua + tunjunganTua;
 		model.addAttribute("gajiTua", Math.round(gajiPokokTua));
 		
 		model.addAttribute("pegawaiMuda", pegawaiService.getPegawaiBynip(nipMuda));

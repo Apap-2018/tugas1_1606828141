@@ -1,29 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<title>Detail Jabatan</title>
-		
-		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-	</head>
-	
-	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<h2 th:text="'Detail Jabatan ' + ${jabatan.nama}"></h2>
-		
-		<h3 th:text="'Nama ' + ${jabatan.nama}"></h3>
-		<h3 th:text="'Deskripsi '+ ${jabatan.deskripsi}"></h3>
-		<h3 th:text="'Gaji Pokok '+ ${jabatan.gajiPokok}"></h3>
-		
+<head>
+<title>Detail Jabatan</title>
+
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container-fluid">
+		<div style="margin:16px;">
+		<h4 th:text="'Detail Jabatan ' + ${jabatan.nama}"></h4>
 		<br>
-		<form th:action="@{/jabatan/ubah}" method ="GET">
-			<input type="hidden" th:name="idJabatan" th:value="${jabatan.id}" />
-			<button value = "submit">Ubah</button>
-		</form>
-		<form th:action="@{/jabatan/hapus}" method ="GET">
-			<input type="hidden" th:name="idJabatan" th:value="${jabatan.id}" />
-			<button type = "submit">Hapus</button>
-		</form>
-	</body>
+			<div class="card" style="padding:16px; width:50%;">
+				<table>
+					<tr>
+						<td th:text="'Nama '" ></td>
+						<td th:text="${jabatan.nama}"></td>
+						
+					</tr>
+					<tr>
+						<td th:text="'Deskripsi '" ></td>
+						<td th:text="${jabatan.deskripsi}"></td>
+						
+					</tr>
+					<tr>
+						<td th:text="'Gaji Pokok '" ></td>
+						<td th:text="${jabatan.gajiPokok}"></td>
+						
+					</tr>					
+				
+				</table>
+				<br>
+			
+				<table>
+					<tr>
+						<td>
+							<form th:action="@{/jabatan/ubah}" method="GET">
+								<input type="hidden" th:name="idJabatan" th:value="${jabatan.id}" />
+								<button value="submit" class="btn btn-primary active">Ubah</button>
+							</form>
+						</td>
+						<td>
+							<form th:action="@{/jabatan/hapus}" method="GET">
+								<input type="hidden" th:name="idJabatan" th:value="${jabatan.id}" />
+								<button type="submit" class="btn btn-danger active">Hapus</button>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
 </html>

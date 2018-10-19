@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-	<head>
-		<title>Detail Pegawai</title>
-		
-		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-	</head>
-	
-	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<h2 th:text="'Lihat Data Pegawai - ' + ${pegawai.nip}"></h2>
-		
+<head>
+<title>Detail Pegawai</title>
+
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<br>
+	<div class="container-fluid">
+		<h3 th:text="'Lihat Data Pegawai - ' + ${pegawai.nip}"></h3>
+
 		<div class="row">
 			<div class="col-md-6">
-	            <div class="card">
-	            	<div class="card-body">
-	          			<h3 th:text="'NIP '+${pegawai.nip}"></h3>
-						<h3 th:text="'Nama '+${pegawai.nama}"></h3>
-						<h3 th:text="'Tempat Lahir '+${pegawai.tempatLahir}"></h3>
-						<h3 th:text="'Tanggal Lahir '+${pegawai.tanggalLahir}"></h3>
-						<h3 th:text="'Tahun Masuk '+${pegawai.tahunMasuk}"></h3>
-						<h3 th:text="'Nama Instansi ' + ${pegawai.instansi.nama} + ' - ' + ${pegawai.instansi.provinsi.nama}"></h3>
+				<div class="card">
+					<div class="card-header" th:text="${pegawai.nama}"></div>
+					<div class="card-body">
+						<p th:text="'NIP '+${pegawai.nip}"></p>
+						<p th:text="'Nama '+${pegawai.nama}"></p>
+						<p th:text="'Tempat Lahir '+${pegawai.tempatLahir}"></p>
+						<p th:text="'Tanggal Lahir '+${pegawai.tanggalLahir}"></p>
+						<p th:text="'Tahun Masuk '+${pegawai.tahunMasuk}"></p>
+						<p
+							th:text="'Nama Instansi ' + ${pegawai.instansi.nama} + ' - ' + ${pegawai.instansi.provinsi.nama}"></p>
 						<ul th:each="jabatan : ${jabatan}">
-							<li th:text="${jabatan.nama}"> </li>
+							<li th:text="${jabatan.nama}"></li>
 						</ul>
-						<h3 th:text="'Gaji Rp'+${gaji}"></h3>  		
-	            	</div>
+						<h5 th:text="'Gaji Rp '+${#numbers.formatDecimal(gaji, 0, 'COMMA', 2, 'POINT')}"></h5>
+					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<br>
-		<button type = "submit" class="btn btn-primary">Ubah</button>
-	</body>
+		<button type="submit" class="btn btn-outline-primary">Ubah</button>
+	</div>
+</body>
 </html>

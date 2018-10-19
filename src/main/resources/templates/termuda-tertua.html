@@ -13,7 +13,7 @@
 			.column {
 				float: left;
 				width: 50%;
-				padding: 10px;
+				padding: 75px;
 				height: 300px; /* Should be removed. Only for demonstration */
 			}
 			
@@ -43,31 +43,31 @@
   			<div class="column" style="background-color:white;">
 				<h2>Data Pegawai Termuda</h2>
 				
-				<h4 th:text="'NIP '+${pegawaiMuda.nip}"></h4>
-				<h4 th:text="'Nama '+${pegawaiMuda.nama}"></h4>
-				<h4 th:text="'Tempat Lahir '+${pegawaiMuda.tempatLahir}"></h4>
-				<h4 th:text="'Tanggal Lahir '+${pegawaiMuda.tanggalLahir}"></h4>
-				<h4 th:text="'Tahun Masuk '+${pegawaiMuda.tahunMasuk}"></h4>
-				<h4 th:text="'Nama Instansi ' + ${pegawaiMuda.instansi.nama} + ' - ' + ${pegawaiMuda.instansi.provinsi.nama}"></h4>
+				<p th:text="'NIP '+${pegawaiMuda.nip}"></p>
+				<p th:text="'Nama '+${pegawaiMuda.nama}"></p>
+				<p th:text="'Tempat Lahir '+${pegawaiMuda.tempatLahir}"></p>
+				<p th:text="'Tanggal Lahir '+${pegawaiMuda.tanggalLahir}"></p>
+				<p th:text="'Tahun Masuk '+${pegawaiMuda.tahunMasuk}"></p>
+				<p th:text="'Nama Instansi ' + ${pegawaiMuda.instansi.nama} + ' - ' + ${pegawaiMuda.instansi.provinsi.nama}"></p>
 				<ul th:each="jabatan : ${jabatanMuda}">
 					<li th:text="${jabatan.nama}"> </li>
 				</ul>
-				<h4 th:text="'Gaji Rp '+${gajiMuda}"></h4>
+				<h5 th:text="'Gaji Rp '+${#numbers.formatDecimal(gajiMuda, 0, 'COMMA', 2, 'POINT')}"></h5>
 			</div>
 		
 			<div class="column" style="background-color:white;">		
 				<h2>Data Pegawai Tertua</h2>
 				
-				<h4 th:text="'NIP '+${pegawaiTua.nip}"></h4>
-				<h4 th:text="'Nama '+${pegawaiTua.nama}"></h4>
-				<h4 th:text="'Tempat Lahir '+${pegawaiTua.tempatLahir}"></h4>
-				<h4 th:text="'Tanggal Lahir '+${pegawaiTua.tanggalLahir}"></h4>
-				<h4 th:text="'Tahun Masuk '+${pegawaiTua.tahunMasuk}"></h4>
-				<h4 th:text="'Nama Instansi ' + ${pegawaiTua.instansi.nama} + ' - ' + ${pegawaiTua.instansi.provinsi.nama}"></h4>
+				<p th:text="'NIP '+${pegawaiTua.nip}"></p>
+				<p th:text="'Nama '+${pegawaiTua.nama}"></p>
+				<p th:text="'Tempat Lahir '+${pegawaiTua.tempatLahir}"></p>
+				<p th:text="'Tanggal Lahir '+${pegawaiTua.tanggalLahir}"></p>
+				<p th:text="'Tahun Masuk '+${pegawaiTua.tahunMasuk}"></p>
+				<p th:text="'Nama Instansi ' + ${pegawaiTua.instansi.nama} + ' - ' + ${pegawaiTua.instansi.provinsi.nama}"></p>
 				<ul th:each="jabatan : ${jabatanTua}">
 					<li th:text="${jabatan.nama}"> </li>
 				</ul>
-				<h4 th:text="'Gaji Rp '+${gajiTua}"></h4>
+				<h5 th:text="'Gaji Rp '+${#numbers.formatDecimal(gajiTua, 0, 'COMMA', 2, 'POINT')}"></h5>
 			</div>
 		</div>
 	</body>
