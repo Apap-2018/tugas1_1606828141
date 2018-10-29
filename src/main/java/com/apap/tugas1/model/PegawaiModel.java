@@ -53,7 +53,7 @@ public class PegawaiModel implements Serializable {
 	@NotNull
 	@Size(max = 255)
 	@Column(name = "tahun_masuk", nullable = false)
-	private int tahunMasuk;
+	private String tahunMasuk;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_instansi", referencedColumnName = "id", nullable = false)
@@ -108,11 +108,11 @@ public class PegawaiModel implements Serializable {
 		this.tanggalLahir = tanggalLahir;
 	}
 
-	public int getTahunMasuk() {
+	public String getTahunMasuk() {
 		return tahunMasuk;
 	}
 
-	public void setTahunMasuk(int tahunMasuk) {
+	public void setTahunMasuk(String tahunMasuk) {
 		this.tahunMasuk = tahunMasuk;
 	}
 

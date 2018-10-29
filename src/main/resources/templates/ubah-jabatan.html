@@ -19,9 +19,9 @@
                 <div class="card">
                     <div class="card-body">
                         <form th:action="@{/jabatan/ubah}" th:object="${modelJabatan}" method="POST">
-                            <input type="hidden" name="idJabatan" th:value="${modelJabatan.id}" th:field="*{id}" />
+                            
                             Nama
-                            <input type="text" name="nama" th:value="${modelJabatan.nama}" th:field="*{nama}" class="form-control" />
+                            <input type="text" name="nama" th:value="${modelJabatan.nama}"  class="form-control" />
                             <br>
                             Deskripsi 
                             <input type="text" name="deskripsi" th:value="${modelJabatan.deskripsi}" th:field="*{deskripsi}" class="form-control" />
@@ -29,7 +29,7 @@
                             Gaji Pokok 
                             <input type="number" name="gajiPokok" th:value="${modelJabatan.gajiPokok}" th:field="*{gajiPokok}" class="form-control" />
                             <br>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit?</button>
                         </form>
                     </div>
                 </div>

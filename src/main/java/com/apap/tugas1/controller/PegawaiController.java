@@ -1,12 +1,12 @@
 package com.apap.tugas1.controller;
 
 import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,6 +17,7 @@ import com.apap.tugas1.model.PegawaiModel;
 import com.apap.tugas1.service.InstansiService;
 import com.apap.tugas1.service.JabatanService;
 import com.apap.tugas1.service.PegawaiService;
+import com.apap.tugas1.service.ProvinsiService;
 
 
 @Controller
@@ -29,6 +30,9 @@ public class PegawaiController {
 	
 	@Autowired
 	private InstansiService instansiService;
+	
+	@Autowired
+	private ProvinsiService provinsiService;
 	
 	@RequestMapping("/")
 	private String home(Model model) {
@@ -100,4 +104,42 @@ public class PegawaiController {
 		
 		return "termuda-tertua";
 	}	
+	
+	@RequestMapping(value = "/pegawai/tambah", method = RequestMethod.GET)
+	private String addPegawai(Model model) {
+		PegawaiModel pegawai = new PegawaiModel();
+		pegawai.setInstansi(new InstansiModel());
+		
+		model.addAttribute("pegawai", pegawai);
+		model.addAttribute("listProvinsi", provinsiService.getListProvinsi());
+		model.addAttribute("listJabatan", jabatanService.jabatanList());
+		
+		return "tambah-pegawai";
+	}
+
+	@RequestMapping(value = "/pegawai/tambah", method = RequestMethod.POST)
+	private String addPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
+		String nip = "";
+		
+		nip += pegawai.getInstansi().getId();
+		
+		String[] tanggalLahir = pegawai.getTanggalLahir().toString().split("-");
+		String tglLahirString = tanggalLahir[2] + tanggalLahir[1] + tanggalLahir[0].substring(2, 4);
+		nip += tglLahirString;
+
+		nip += pegawai.getTahunMasuk();
+
+		int counter = 1;
+		for (PegawaiModel pegawaiInstansi : pegawai.getInstansi().getPegawaiInstansi()) {
+			if (pegawaiInstansi.getTahunMasuk().equals(pegawai.getTahunMasuk()) && pegawaiInstansi.getTanggalLahir().equals(pegawai.getTanggalLahir())) {
+				counter ++;
+			}	
+		}
+		nip += "0" + counter;
+		pegawai.setNip(nip);
+		pegawaiService.addPegawai(pegawai);
+		
+		model.addAttribute("pegawai", pegawai);
+		return "tambah-pegawai-sukses";
+	}
 }

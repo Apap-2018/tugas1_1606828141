@@ -14,14 +14,14 @@
 		<form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method = "POST">
 			Nama
 			<input type = "text" name = "nama" />
-			<br>
+			<br><br>
 			Deskripsi
 			<input type = "text" name = "deskripsi" />
-			<br>
+			<br><br>
 			Gaji Pokok
 			<input type = "number" name = "gajiPokok" />
 			<br><br>
-			<button type = "submit">Simpan</button>
+			<button type = "submit" class="btn btn-primary">Simpan</button>
 		</form>
 	</body>
 </html>
