@@ -36,7 +36,10 @@
 		</div>
 
 		<br>
-		<button type="submit" class="btn btn-outline-primary">Ubah</button>
+		<form th:action="@{/pegawai/ubah}" method="GET">
+			<input type="hidden" th:field="*{pegawai.nip}"></input>
+			<button type="submit" class="btn btn-primary">Ubah</button>
+		</form>
 	</div>
 </body>
 </html>
